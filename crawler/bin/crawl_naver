@@ -18,7 +18,7 @@ def main():
     output_file = args.output if args.output else f'{today:%Y%m%d}_{stock_code}.csv'
 
     df = get_prices(stock_code=stock_code, num_days=args.days)
-    df.to_csv(output_file, header=True, index=True)
+    df.to_csv(output_file, header=True, index=True, sep=',')
     print(f"output path: {output_file}")
 
 
