@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+
+import argparse
+import datetime
+
+from stock_crawler.naver import get_prices
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-c', '--code', type=str, required=True, help='stock code')
+    parser.add_argument('-d', '--days', type=int, default=7)
+    parser.add_argument('-o', '--output', type=str, default='', help='output file')
+    args = parser.parse_args()
+
+    today = datetime.datetime.today()
+    stock_code = args.code
+    output_file = args.output if args.output else f'{today:%Y%m%d}_{stock_code}.csv'
+
+    df = get_prices(stock_code=stock_code, num_days=args.days)
+    df.to_csv(output_file, header=True, index=True)
+    print(f"output path: {output_file}")
+
+
+if __name__ == "__main__":
+    main()
