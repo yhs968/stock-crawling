@@ -1,0 +1,28 @@
+spring:
+  batch:
+    job:
+      names: ${job.name:NONE}
+    initialize-schema: always
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/stock_price
+    username: sua
+    password: psql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        #jdbc:
+         # batch_size: 100
+        show_sql: false
+        generate_statistics: false
+#      database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+      open-in-view: false
+      show-sql: false
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    org.springframework: info
+    org.hibernate: info
