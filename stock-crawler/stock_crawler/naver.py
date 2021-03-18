@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def get_prices(stock_code: str, num_days: int = 7):
+def get_prices(stock_code: str, num_days: int = 30) -> "pd.DataFrame[code, date, price]":
     """
     네이버 증권에서 가격 정보를 불러온다.
 
@@ -12,6 +12,9 @@ def get_prices(stock_code: str, num_days: int = 7):
     Args:
         stock_code: 종목코드
         count: 가져올 일수
+
+    Returns:
+        df
     """
     base_url = 'https://fchart.stock.naver.com/sise.nhn'
     params = {
@@ -36,6 +39,8 @@ def get_prices(stock_code: str, num_days: int = 7):
 
     date_index = pd.Index(name='date', data=dates)
 
-    df = pd.DataFrame({'price': prices}, index=date_index)
+    df = pd.DataFrame({'price': prices, 'date': dates})
+    df['code'] = stock_code
+    df = df[['code', 'date', 'price']]
 
-    return df.sort_index(ascending=False)
+    return df.sort_values(by='date', ascending=False)

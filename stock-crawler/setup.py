@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='stock-crawler',
-    version='1.0.0',
+    version='1.0.1',
     packages=find_packages(),
     include_package_data=True,
     python_requires='>=3.8',
@@ -11,7 +11,6 @@ setup(
         'pandas',
         'beautifulsoup4',
         'pytest'
-    ],
-    scripts=['bin/crawl_naver']
+    ]
 )
 
