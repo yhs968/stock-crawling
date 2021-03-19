@@ -10,7 +10,7 @@ spring:
     password: psql
   jpa:
     hibernate:
-      ddl-auto: create #update
+      ddl-auto: none #create
     properties:
       hibernate:
         #jdbc:

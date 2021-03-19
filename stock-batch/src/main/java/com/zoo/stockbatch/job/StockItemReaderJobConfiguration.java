@@ -66,30 +66,30 @@ public class StockItemReaderJobConfiguration {
                 .build();
     }
 
-    @Bean
-    public Job jdbcBatchItemWriterJob(){
-        return jobBuilderFactory.get("jdbcBatchItemWriterJob")
-                .start(jdbcBatchItemWriterStep())
-                .build();
-    }
+//    @Bean
+//    public Job jdbcBatchItemWriterJob(){
+//        return jobBuilderFactory.get("jdbcBatchItemWriterJob")
+//                .start(jdbcBatchItemWriterStep())
+//                .build();
+//    }
 
-    @Bean
-    public Step jdbcBatchItemWriterStep(){
-        return stepBuilderFactory.get("jdbcBatchItemWriterStep")
-                .<Stock, Stock>chunk(chunkSize)
-                .reader(flatFileItemReader())
-                .writer(jdbcBatchItemWriter())
-                .build();
-    }
+//    @Bean
+//    public Step jdbcBatchItemWriterStep(){
+//        return stepBuilderFactory.get("jdbcBatchItemWriterStep")
+//                .<Stock, Stock>chunk(chunkSize)
+//                .reader(flatFileItemReader())
+//                .writer(jdbcBatchItemWriter())
+//                .build();
+//    }
 
-    @Bean
-    public JdbcBatchItemWriter<Stock> jdbcBatchItemWriter(){
-        return new JdbcBatchItemWriterBuilder<Stock>()
-                .dataSource(dataSource)
-                .sql("insert into daily_price(code, date, price) values (:code, :date, :price)")
-                .beanMapped()
-                .build();
-    }
+//    @Bean
+//    public JdbcBatchItemWriter<Stock> jdbcBatchItemWriter(){
+//        return new JdbcBatchItemWriterBuilder<Stock>()
+//                .dataSource(dataSource)
+//                .sql("insert into daily_price(code, date, price) values (:code, :date, :price)")
+//                .beanMapped()
+//                .build();
+//    }
 
     @Bean
     public FlatFileItemReader<Stock> flatFileItemReader(){
