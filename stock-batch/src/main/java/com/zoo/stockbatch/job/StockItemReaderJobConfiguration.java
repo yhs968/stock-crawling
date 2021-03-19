@@ -1,17 +1,14 @@
 package com.zoo.stockbatch.job;
 
-import com.zoo.stockbatch.Stock;
 import com.zoo.stockbatch.StockFieldSetMapper;
+import com.zoo.stockcommon.domain.Stock;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
-import org.springframework.batch.item.ItemWriter;
-import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.database.JpaItemWriter;
-import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
@@ -34,12 +31,12 @@ public class StockItemReaderJobConfiguration {
 
     private static final int chunkSize = 10;
 
-    @Bean
-    public Job consoleWriterJob(){
-        return jobBuilderFactory.get("consoleWriterJob")
-                .start(consoleWriterStep())
-                .build();
-    }
+//    @Bean
+//    public Job consoleWriterJob(){
+//        return jobBuilderFactory.get("consoleWriterJob")
+//                .start(consoleWriterStep())
+//                .build();
+//    }
 
     @Bean
     public Job pgWriterJob(){
@@ -48,14 +45,14 @@ public class StockItemReaderJobConfiguration {
                 .build();
     }
 
-    @Bean
-    public Step consoleWriterStep(){
-        return stepBuilderFactory.get("consoleWriterStep")
-                .<Stock, Stock>chunk(chunkSize)
-                .reader(flatFileItemReader())
-                .writer(stockWriter())
-                .build();
-    }
+//    @Bean
+//    public Step consoleWriterStep(){
+//        return stepBuilderFactory.get("consoleWriterStep")
+//                .<Stock, Stock>chunk(chunkSize)
+//                .reader(flatFileItemReader())
+//                .writer(stockWriter())
+//                .build();
+//    }
 
     @Bean
     public Step pgWriterStep(){
@@ -108,14 +105,14 @@ public class StockItemReaderJobConfiguration {
 
         return itemReader;
     }
-
-    private ItemWriter<Stock> stockWriter(){
-        return list -> {
-            for (Stock stock: list){
-                log.info("Current Stock={}", stock);
-            }
-        };
-    }
+//
+//    private ItemWriter<Stock> stockWriter(){
+//        return list -> {
+//            for (Stock stock: list){
+//                log.info("Current Stock={}", stock);
+//            }
+//        };
+//    }
 
     @Bean
     public JpaItemWriter<Stock> jpaItemWriter(){

@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="stock-batch" />
+        <module name="stock-common" />
         <module name="stock-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="stock-batch" target="15" />
+      <module name="stock-common" target="15" />
       <module name="stock-crawling" target="15" />
       <module name="stock-web" target="15" />
     </bytecodeTargetLevel>
@@ -20,6 +22,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="stock-batch" options="-parameters" />
+      <module name="stock-common" options="-parameters" />
       <module name="stock-crawling" options="-parameters" />
       <module name="stock-web" options="-parameters" />
     </option>
