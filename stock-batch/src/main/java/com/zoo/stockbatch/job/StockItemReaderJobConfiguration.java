@@ -32,7 +32,7 @@ public class StockItemReaderJobConfiguration {
     private final EntityManagerFactory entityManagerFactory;
     private final DataSource dataSource;
 
-    private static final int chunkSize = 7;
+    private static final int chunkSize = 10;
 
     @Bean
     public Job consoleWriterJob(){
@@ -86,7 +86,7 @@ public class StockItemReaderJobConfiguration {
     public JdbcBatchItemWriter<Stock> jdbcBatchItemWriter(){
         return new JdbcBatchItemWriterBuilder<Stock>()
                 .dataSource(dataSource)
-                .sql("insert into daily_price(date, price) values (:date, :price)")
+                .sql("insert into daily_price(code, date, price) values (:code, :date, :price)")
                 .beanMapped()
                 .build();
     }
@@ -95,7 +95,7 @@ public class StockItemReaderJobConfiguration {
     public FlatFileItemReader<Stock> flatFileItemReader(){
 
         FlatFileItemReader<Stock> itemReader = new FlatFileItemReader<Stock>();
-        itemReader.setResource(new FileSystemResource("/Users/sua/Github/project/stock-crawling/shared/example.csv"));
+        itemReader.setResource(new FileSystemResource("/Users/sua/Github/project/stock-crawling/stock-data/example.csv"));
 
         //Set number of lines to skips. Use it if file has header rows.
         itemReader.setLinesToSkip(1);
