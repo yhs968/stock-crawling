@@ -7,8 +7,9 @@ public class StockFieldSetMapper implements FieldSetMapper<Stock> {
     public Stock mapFieldSet(FieldSet fieldSet){
         Stock stock = new Stock();
 
-        stock.setDate(fieldSet.readString(0));
-        stock.setPrice(fieldSet.readString(1));
+        stock.setCode(fieldSet.readString(0));
+        stock.setDate(fieldSet.readString(1));
+        stock.setPrice(fieldSet.readString(2));
 
         return stock;
     }

@@ -1,4 +1,4 @@
-package com.zoo.stockbatch;
+package com.zoo.stockweb.domain;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -16,10 +16,8 @@ import java.io.Serializable;
 public class Stock implements Serializable {
 
     @Id
-    @GeneratedValue
-    private Long id;
     private String code;
-    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String date;
     private String price;
 
@@ -28,3 +26,4 @@ public class Stock implements Serializable {
 //    }
 
 }
+
