@@ -1,4 +1,4 @@
-package com.zoo.stockbatch;
+package com.zoo.stockcommon.domain;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
 //@NoArgsConstructor
 //@Table(name="daily_price")
 @Entity
@@ -28,3 +28,4 @@ public class Stock implements Serializable {
 //    }
 
 }
+

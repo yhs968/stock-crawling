@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/stock-batch/stock-batch.iml" filepath="$PROJECT_DIR$/stock-batch/stock-batch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stock-common/stock-common.iml" filepath="$PROJECT_DIR$/stock-common/stock-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/stock-crawling.iml" filepath="$PROJECT_DIR$/stock-crawling.iml" />
       <module fileurl="file://$PROJECT_DIR$/stock-web/stock-web.iml" filepath="$PROJECT_DIR$/stock-web/stock-web.iml" />
     </modules>
