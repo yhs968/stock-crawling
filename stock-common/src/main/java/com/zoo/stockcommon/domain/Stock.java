@@ -13,13 +13,13 @@ import java.io.Serializable;
 //@NoArgsConstructor
 //@Table(name="daily_price")
 @Entity
+@IdClass(StockId.class)
 public class Stock implements Serializable {
 
     @Id
-    @GeneratedValue
-    private Long id;
     private String code;
     //    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private String date;
     private String price;
 
