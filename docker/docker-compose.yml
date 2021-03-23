@@ -1,0 +1,52 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:13.1
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=sua
+      - POSTGRES_PASSWORD=psql
+    ports:
+      - 5432:5432
+    expose:
+      - "5432"
+    volumes:
+      - type: volume
+        source: stock-volume
+        target: /var/lib/postgresql/data
+  
+  batch-server:
+    container_name: batch-server
+    build:
+      context: ./stock-batch
+      dockerfile: Dockerfile
+    image: stock-batch:latest
+    stdin_open: true
+    tty: true
+    depends_on:
+      - postgres
+    networks:
+      - stock-network
+
+  web-server:
+    container_name: web-server
+    build:
+      context: ./stock-web
+      dockerfile: Dockerfile
+    image: stock-web:latest
+    stdin_open: true
+    tty: true
+    ports:
+      - 8080:8080
+    expose:
+      - "8080"
+    depends_on:
+      - postgres
+    networks:
+      - stock-network
+
+networks:
+  stock-network:
+    driver: bridge
+volumes:
+  stock-volume:
