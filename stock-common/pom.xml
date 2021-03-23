@@ -7,8 +7,12 @@
         <artifactId>stock-crawling</artifactId>
         <groupId>com.zoo</groupId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>stock-common</artifactId>
+    <properties>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+    </properties>
     <version>0.0.1-SNAPSHOT</version>
     <name>stock-common</name>
     <description>Demo project for Spring Boot</description>
