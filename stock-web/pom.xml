@@ -6,9 +6,11 @@
         <groupId>com.zoo</groupId>
         <artifactId>stock-crawling</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>stock-web</artifactId>
+    <!-- add packaging -->
+    <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>stock-web</name>
     <description>Demo project for Spring Boot</description>
