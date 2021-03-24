@@ -22,3 +22,14 @@ logging:
   level:
     org.springframework: info
     org.hibernate: info
+
+---
+spring:
+  profiles:
+    active: default
+---
+spring:
+  profiles: docker
+  datasource:
+    url: jdbc:postgresql://db:5432/stock_price
+---

@@ -12,6 +12,7 @@ import org.springframework.batch.item.database.JpaItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
@@ -39,9 +40,9 @@ public class StockItemReaderJobConfiguration {
 //    }
 
     @Bean
-    public Job pgWriterJob(){
+    public Job pgWriterJob(@Value("${input.file.name}") String filename){
         return jobBuilderFactory.get("pgWriterJob")
-                .start(pgWriterStep())
+                .start(pgWriterStep(filename))
                 .build();
     }
 
@@ -55,10 +56,10 @@ public class StockItemReaderJobConfiguration {
 //    }
 
     @Bean
-    public Step pgWriterStep(){
+    public Step pgWriterStep(@Value("${input.file.name}") String filename){
         return stepBuilderFactory.get("pgWriterStep")
                 .<Stock, Stock>chunk(chunkSize)
-                .reader(flatFileItemReader())
+                .reader(flatFileItemReader(filename))
                 .writer(jpaItemWriter())
                 .build();
     }
@@ -89,10 +90,10 @@ public class StockItemReaderJobConfiguration {
 //    }
 
     @Bean
-    public FlatFileItemReader<Stock> flatFileItemReader(){
+    public FlatFileItemReader<Stock> flatFileItemReader(@Value("${input.file.name}") String filename){
 
         FlatFileItemReader<Stock> itemReader = new FlatFileItemReader<Stock>();
-        itemReader.setResource(new FileSystemResource("/Users/sua/Github/project/stock-crawling/stock-data/example.csv"));
+        itemReader.setResource(new FileSystemResource(filename));
 
         //Set number of lines to skips. Use it if file has header rows.
         itemReader.setLinesToSkip(1);
