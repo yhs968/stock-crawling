@@ -6,6 +6,7 @@ services:
     environment:
       - POSTGRES_USER=sua
       - POSTGRES_PASSWORD=psql
+      - POSTGRES_DB=stock_price
     ports:
       - 5432:5432
     expose:
@@ -16,12 +17,26 @@ services:
         target: /var/lib/postgresql/data
     networks:
       - stock-network
-  
+  jenkins-server:
+    image: jenkins/jenkins:lts
+    container_name: jenkins-server
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - type: volume
+        source: stock-jenkins
+        target: /var/jenkins_home
+    networks:
+      - stock-network
+      
   batch-server:
     container_name: batch-server
     build:
       context: ./stock-batch
       dockerfile: Dockerfile
+    environment:
+      - JENKINS_AGENT_SSH_PUBKEY=${SSH_PUBKEY}
     image: stock-batch:latest
     stdin_open: true
     tty: true
@@ -43,9 +58,9 @@ services:
     stdin_open: true
     tty: true
     ports:
-      - 8080:8080
+      - 9999:8080
     expose:
-      - "8080"
+      - "9999"
     depends_on:
       - postgres
     networks:
@@ -57,3 +72,4 @@ networks:
 volumes:
   stock-db:
   stock-buffer:
+  stock-jenkins:
