@@ -28,7 +28,7 @@ RUN chmod +x run_batch.sh
 # RUN addgroup -g ${gid} ${group} \
 #     && adduser -u "${uid}" -g "${gid}" -s /bin/bash "${user}"
 
-RUN apk update && apk update && apk add bash
+RUN apk update && apk add bash
 
 ARG user=jenkins
 ARG group=jenkins
