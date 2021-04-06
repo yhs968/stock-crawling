@@ -46,6 +46,7 @@ RUN yum install -y openssh-server openssh-clients \
 # setup jenkins_2
 VOLUME "${JENKINS_AGENT_HOME}" "/tmp" "/run" "/var/run"
 WORKDIR "${JENKINS_AGENT_HOME}"
+RUN mkdir $JENKINS_AGENT_HOME/data && chown jenkins:jenkins $JENKINS_AGENT_HOME/data
 
 # setup SSH server_2
 COPY setup-sshd /usr/local/bin/setup-sshd
