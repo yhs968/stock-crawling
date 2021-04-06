@@ -1,0 +1,3 @@
+com/zoo/stockbatch/StockBatchApplication.class
+com/zoo/stockbatch/StockFieldSetMapper.class
+com/zoo/stockbatch/job/StockItemReaderJobConfiguration.class

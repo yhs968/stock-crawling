@@ -1,5 +1,6 @@
 package com.zoo.stockbatch;
 
+import com.zoo.stockcommon.domain.Stock;
 import org.springframework.batch.item.file.mapping.FieldSetMapper;
 import org.springframework.batch.item.file.transform.FieldSet;
 
