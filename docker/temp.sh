@@ -1,0 +1,1 @@
+docker run -d -it --name db -p 5432:5432 --expose 5432 -v stock-db:/var/lib/postgresql/data --network docker_stock-network -e POSTGRES_USER=sua -e POSTGRES_PASSWORD=psql -e POSTGRES_DB=stock_price postgres:13.1 

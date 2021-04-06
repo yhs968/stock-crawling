@@ -1,0 +1,1 @@
+python3 /opt/stock-crawling/run_crawl.py --days 1 --output /opt/stock-crawling/data/prices.csv
