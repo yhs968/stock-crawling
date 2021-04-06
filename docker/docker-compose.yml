@@ -17,6 +17,7 @@ services:
         target: /var/lib/postgresql/data
     networks:
       - stock-network
+      
   jenkins-server:
     image: jenkins/jenkins:lts
     container_name: jenkins-server
@@ -48,7 +49,7 @@ services:
     volumes:
       - type: volume
         source: stock-buffer
-        target: /home/jenkins/data
+        target: /opt/stock-crawling/data
 
   web-server:
     container_name: web-server
@@ -82,7 +83,7 @@ services:
     volumes:
       - type: volume
         source: stock-buffer
-        target: /opt/stock-crawling/data
+        target: /home/jenkins/data
 
 
 networks:
