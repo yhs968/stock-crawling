@@ -20,7 +20,7 @@ spring:
       #      database-platform: org.hibernate.dialect.PostgreSQL10Dialect
       open-in-view: false
       show-sql: false
-input.file.name: /Users/sua/Github/project/stock-crawling/stock-data/example.csv
+input.file.name: /Users/sua/Github/project/stock-crawling/stock-data/prices.csv
 logging:
   pattern:
     console: "%d %-5level %logger : %msg%n"
@@ -37,5 +37,5 @@ spring:
   profiles: docker
   datasource:
     url: jdbc:postgresql://db:5432/stock_price
-input.file.name: /opt/stock-crawling/data/example.csv
+input.file.name: /opt/stock-crawling/data/prices.csv
 ---
