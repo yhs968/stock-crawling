@@ -27,8 +27,7 @@ public class FormController {
 
     @GetMapping("/stock/{code}")
     @ResponseBody
-    public String showStockData(@PathVariable("code") String code){
-        List<Stock> stocks = stockRepository.findByCode(code);
-        return stocks.toString();
+    public List<Stock> showStockData(@PathVariable("code") String code){
+        return stockRepository.findByCode(code);
     }
 }
