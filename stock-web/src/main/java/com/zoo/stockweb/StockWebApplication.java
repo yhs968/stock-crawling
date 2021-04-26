@@ -10,9 +10,6 @@ import com.zoo.stockcommon.repository.StockRepository;
 @SpringBootApplication
 @EntityScan(basePackageClasses = {Stock.class})
 @EnableJpaRepositories(basePackageClasses = {StockRepository.class})
-//@EnableJpaRepositories(basePackages = "com.zoo.stockcommon")
-//@EntityScan(basePackages = "com.zoo.stockcommon")
-//@ComponentScan(basePackages = "com.zoo.stockcommon")
 public class StockWebApplication {
     public static void main(String[] args) { SpringApplication.run(StockWebApplication.class, args);
 
