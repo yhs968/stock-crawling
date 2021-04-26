@@ -50,7 +50,10 @@ class StockWebApplicationTests {
   @Test
   void testGreetingSubmit() throws Exception {
     String mockStockId = "035720";  // 카카오 주식 종목코드
-    String mockStockForm = String.format("{\"stockId\": \"%s\"}", mockStockId);
+
+    // curl -X POST url 할 때 필요한 json 객체 hard coding
+    // json 객체 : html form 에 들어갈 model attribute fields
+    String mockStockForm = String.format("{\"code\": \"%s\"}", mockStockId);
 
     mockMvc.perform(
         post("/stock")
@@ -68,14 +71,15 @@ class StockWebApplicationTests {
    *
    * @throws Exception
    */
-  @Test
-  void testShowStockData() throws Exception {
-    String mockStockId = "035720";  // 카카오 주식 종목코드
-    String mockStockUrl = String.format("/stock/%s", mockStockId);
 
-    mockMvc.perform(get(mockStockUrl)
-        .accept(MediaType.APPLICATION_JSON)
-    )
-        .andExpect(status().isOk());
-  }
+//  @Test
+//  void testShowStockData() throws Exception {
+//    String mockStockId = "035720";  // 카카오 주식 종목코드
+//    String mockStockUrl = String.format("/stock/%s", mockStockId);
+//
+//    mockMvc.perform(get(mockStockUrl)
+//        .accept(MediaType.APPLICATION_JSON)
+//    )
+//        .andExpect(status().isOk());
+//  }
 }

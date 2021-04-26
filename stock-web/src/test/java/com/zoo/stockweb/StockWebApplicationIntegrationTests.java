@@ -28,6 +28,7 @@ public class StockWebApplicationIntegrationTests {
   @LocalServerPort
   private int port;
 
+  // RestTemplate : Spring에서 REST api와 interaction 하기 위한 class
   private TestRestTemplate template = new TestRestTemplate();
 
   /**
@@ -48,6 +49,8 @@ public class StockWebApplicationIntegrationTests {
     MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
     String stockId = "035720";  // 카카오 주식 종목코드
     map.add("code", stockId);
+
+    // Entity = 개체 : 현실세계의 개념에 대응하는 그 무엇
     HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
     ResponseEntity<String> submitResponse = template.postForEntity(homeUrl, request, String.class);
     assertThat(submitResponse.getStatusCode(), is(HttpStatus.CREATED));
